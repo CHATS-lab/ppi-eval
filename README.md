@@ -88,7 +88,7 @@ analysis, ranking-stability experiments, metric score/rank table generation, and
 annotation-saving validation.
 
 Full reproduction can be computationally expensive, especially for
-permutation-based experiments and threshold searches. All outputs are written
+experiments involving permutation tests and SPA. All outputs are written
 under `results/`.
 
 Each experiment script can also be run directly. For example:
