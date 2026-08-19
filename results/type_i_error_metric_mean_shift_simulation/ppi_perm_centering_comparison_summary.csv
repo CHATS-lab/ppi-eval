@@ -1,0 +1,121 @@
+rho,metric_mean,labeled_size,unlabeled_size,method,method_label,rejection_count,num_trials,num_permutations,type_i_error
+0.3,0.0,20,800,ppi_perm,PPI Perm.,467,10000,1000,0.0467
+0.3,0.0,20,800,ppi_perm_uncentered,PPI Perm. (uncentered),467,10000,1000,0.0467
+0.3,0.0,40,800,ppi_perm,PPI Perm.,463,10000,1000,0.0463
+0.3,0.0,40,800,ppi_perm_uncentered,PPI Perm. (uncentered),460,10000,1000,0.046
+0.3,0.0,60,800,ppi_perm,PPI Perm.,473,10000,1000,0.0473
+0.3,0.0,60,800,ppi_perm_uncentered,PPI Perm. (uncentered),472,10000,1000,0.0472
+0.3,0.0,80,800,ppi_perm,PPI Perm.,482,10000,1000,0.0482
+0.3,0.0,80,800,ppi_perm_uncentered,PPI Perm. (uncentered),481,10000,1000,0.0481
+0.3,0.0,100,800,ppi_perm,PPI Perm.,544,10000,1000,0.0544
+0.3,0.0,100,800,ppi_perm_uncentered,PPI Perm. (uncentered),544,10000,1000,0.0544
+0.3,0.0,120,800,ppi_perm,PPI Perm.,472,10000,1000,0.0472
+0.3,0.0,120,800,ppi_perm_uncentered,PPI Perm. (uncentered),474,10000,1000,0.0474
+0.3,0.0,140,800,ppi_perm,PPI Perm.,470,10000,1000,0.047
+0.3,0.0,140,800,ppi_perm_uncentered,PPI Perm. (uncentered),475,10000,1000,0.0475
+0.3,0.0,160,800,ppi_perm,PPI Perm.,519,10000,1000,0.0519
+0.3,0.0,160,800,ppi_perm_uncentered,PPI Perm. (uncentered),516,10000,1000,0.0516
+0.3,0.0,180,800,ppi_perm,PPI Perm.,483,10000,1000,0.0483
+0.3,0.0,180,800,ppi_perm_uncentered,PPI Perm. (uncentered),482,10000,1000,0.0482
+0.3,0.0,200,800,ppi_perm,PPI Perm.,536,10000,1000,0.0536
+0.3,0.0,200,800,ppi_perm_uncentered,PPI Perm. (uncentered),535,10000,1000,0.0535
+0.3,1.0,20,800,ppi_perm,PPI Perm.,525,10000,1000,0.0525
+0.3,1.0,20,800,ppi_perm_uncentered,PPI Perm. (uncentered),610,10000,1000,0.061
+0.3,1.0,40,800,ppi_perm,PPI Perm.,506,10000,1000,0.0506
+0.3,1.0,40,800,ppi_perm_uncentered,PPI Perm. (uncentered),541,10000,1000,0.0541
+0.3,1.0,60,800,ppi_perm,PPI Perm.,506,10000,1000,0.0506
+0.3,1.0,60,800,ppi_perm_uncentered,PPI Perm. (uncentered),524,10000,1000,0.0524
+0.3,1.0,80,800,ppi_perm,PPI Perm.,476,10000,1000,0.0476
+0.3,1.0,80,800,ppi_perm_uncentered,PPI Perm. (uncentered),497,10000,1000,0.0497
+0.3,1.0,100,800,ppi_perm,PPI Perm.,502,10000,1000,0.0502
+0.3,1.0,100,800,ppi_perm_uncentered,PPI Perm. (uncentered),508,10000,1000,0.0508
+0.3,1.0,120,800,ppi_perm,PPI Perm.,524,10000,1000,0.0524
+0.3,1.0,120,800,ppi_perm_uncentered,PPI Perm. (uncentered),526,10000,1000,0.0526
+0.3,1.0,140,800,ppi_perm,PPI Perm.,507,10000,1000,0.0507
+0.3,1.0,140,800,ppi_perm_uncentered,PPI Perm. (uncentered),510,10000,1000,0.051
+0.3,1.0,160,800,ppi_perm,PPI Perm.,442,10000,1000,0.0442
+0.3,1.0,160,800,ppi_perm_uncentered,PPI Perm. (uncentered),439,10000,1000,0.0439
+0.3,1.0,180,800,ppi_perm,PPI Perm.,487,10000,1000,0.0487
+0.3,1.0,180,800,ppi_perm_uncentered,PPI Perm. (uncentered),491,10000,1000,0.0491
+0.3,1.0,200,800,ppi_perm,PPI Perm.,472,10000,1000,0.0472
+0.3,1.0,200,800,ppi_perm_uncentered,PPI Perm. (uncentered),457,10000,1000,0.0457
+0.3,5.0,20,800,ppi_perm,PPI Perm.,494,10000,1000,0.0494
+0.3,5.0,20,800,ppi_perm_uncentered,PPI Perm. (uncentered),528,10000,1000,0.0528
+0.3,5.0,40,800,ppi_perm,PPI Perm.,542,10000,1000,0.0542
+0.3,5.0,40,800,ppi_perm_uncentered,PPI Perm. (uncentered),531,10000,1000,0.0531
+0.3,5.0,60,800,ppi_perm,PPI Perm.,513,10000,1000,0.0513
+0.3,5.0,60,800,ppi_perm_uncentered,PPI Perm. (uncentered),484,10000,1000,0.0484
+0.3,5.0,80,800,ppi_perm,PPI Perm.,505,10000,1000,0.0505
+0.3,5.0,80,800,ppi_perm_uncentered,PPI Perm. (uncentered),463,10000,1000,0.0463
+0.3,5.0,100,800,ppi_perm,PPI Perm.,502,10000,1000,0.0502
+0.3,5.0,100,800,ppi_perm_uncentered,PPI Perm. (uncentered),471,10000,1000,0.0471
+0.3,5.0,120,800,ppi_perm,PPI Perm.,483,10000,1000,0.0483
+0.3,5.0,120,800,ppi_perm_uncentered,PPI Perm. (uncentered),447,10000,1000,0.0447
+0.3,5.0,140,800,ppi_perm,PPI Perm.,524,10000,1000,0.0524
+0.3,5.0,140,800,ppi_perm_uncentered,PPI Perm. (uncentered),476,10000,1000,0.0476
+0.3,5.0,160,800,ppi_perm,PPI Perm.,507,10000,1000,0.0507
+0.3,5.0,160,800,ppi_perm_uncentered,PPI Perm. (uncentered),453,10000,1000,0.0453
+0.3,5.0,180,800,ppi_perm,PPI Perm.,484,10000,1000,0.0484
+0.3,5.0,180,800,ppi_perm_uncentered,PPI Perm. (uncentered),449,10000,1000,0.0449
+0.3,5.0,200,800,ppi_perm,PPI Perm.,522,10000,1000,0.0522
+0.3,5.0,200,800,ppi_perm_uncentered,PPI Perm. (uncentered),482,10000,1000,0.0482
+0.7,0.0,20,800,ppi_perm,PPI Perm.,494,10000,1000,0.0494
+0.7,0.0,20,800,ppi_perm_uncentered,PPI Perm. (uncentered),493,10000,1000,0.0493
+0.7,0.0,40,800,ppi_perm,PPI Perm.,469,10000,1000,0.0469
+0.7,0.0,40,800,ppi_perm_uncentered,PPI Perm. (uncentered),469,10000,1000,0.0469
+0.7,0.0,60,800,ppi_perm,PPI Perm.,491,10000,1000,0.0491
+0.7,0.0,60,800,ppi_perm_uncentered,PPI Perm. (uncentered),500,10000,1000,0.05
+0.7,0.0,80,800,ppi_perm,PPI Perm.,504,10000,1000,0.0504
+0.7,0.0,80,800,ppi_perm_uncentered,PPI Perm. (uncentered),500,10000,1000,0.05
+0.7,0.0,100,800,ppi_perm,PPI Perm.,471,10000,1000,0.0471
+0.7,0.0,100,800,ppi_perm_uncentered,PPI Perm. (uncentered),475,10000,1000,0.0475
+0.7,0.0,120,800,ppi_perm,PPI Perm.,462,10000,1000,0.0462
+0.7,0.0,120,800,ppi_perm_uncentered,PPI Perm. (uncentered),468,10000,1000,0.0468
+0.7,0.0,140,800,ppi_perm,PPI Perm.,461,10000,1000,0.0461
+0.7,0.0,140,800,ppi_perm_uncentered,PPI Perm. (uncentered),467,10000,1000,0.0467
+0.7,0.0,160,800,ppi_perm,PPI Perm.,518,10000,1000,0.0518
+0.7,0.0,160,800,ppi_perm_uncentered,PPI Perm. (uncentered),520,10000,1000,0.052
+0.7,0.0,180,800,ppi_perm,PPI Perm.,491,10000,1000,0.0491
+0.7,0.0,180,800,ppi_perm_uncentered,PPI Perm. (uncentered),492,10000,1000,0.0492
+0.7,0.0,200,800,ppi_perm,PPI Perm.,542,10000,1000,0.0542
+0.7,0.0,200,800,ppi_perm_uncentered,PPI Perm. (uncentered),544,10000,1000,0.0544
+0.7,1.0,20,800,ppi_perm,PPI Perm.,499,10000,1000,0.0499
+0.7,1.0,20,800,ppi_perm_uncentered,PPI Perm. (uncentered),484,10000,1000,0.0484
+0.7,1.0,40,800,ppi_perm,PPI Perm.,458,10000,1000,0.0458
+0.7,1.0,40,800,ppi_perm_uncentered,PPI Perm. (uncentered),356,10000,1000,0.0356
+0.7,1.0,60,800,ppi_perm,PPI Perm.,490,10000,1000,0.049
+0.7,1.0,60,800,ppi_perm_uncentered,PPI Perm. (uncentered),360,10000,1000,0.036
+0.7,1.0,80,800,ppi_perm,PPI Perm.,469,10000,1000,0.0469
+0.7,1.0,80,800,ppi_perm_uncentered,PPI Perm. (uncentered),328,10000,1000,0.0328
+0.7,1.0,100,800,ppi_perm,PPI Perm.,484,10000,1000,0.0484
+0.7,1.0,100,800,ppi_perm_uncentered,PPI Perm. (uncentered),335,10000,1000,0.0335
+0.7,1.0,120,800,ppi_perm,PPI Perm.,474,10000,1000,0.0474
+0.7,1.0,120,800,ppi_perm_uncentered,PPI Perm. (uncentered),340,10000,1000,0.034
+0.7,1.0,140,800,ppi_perm,PPI Perm.,511,10000,1000,0.0511
+0.7,1.0,140,800,ppi_perm_uncentered,PPI Perm. (uncentered),347,10000,1000,0.0347
+0.7,1.0,160,800,ppi_perm,PPI Perm.,519,10000,1000,0.0519
+0.7,1.0,160,800,ppi_perm_uncentered,PPI Perm. (uncentered),346,10000,1000,0.0346
+0.7,1.0,180,800,ppi_perm,PPI Perm.,500,10000,1000,0.05
+0.7,1.0,180,800,ppi_perm_uncentered,PPI Perm. (uncentered),344,10000,1000,0.0344
+0.7,1.0,200,800,ppi_perm,PPI Perm.,525,10000,1000,0.0525
+0.7,1.0,200,800,ppi_perm_uncentered,PPI Perm. (uncentered),362,10000,1000,0.0362
+0.7,5.0,20,800,ppi_perm,PPI Perm.,478,10000,1000,0.0478
+0.7,5.0,20,800,ppi_perm_uncentered,PPI Perm. (uncentered),225,10000,1000,0.0225
+0.7,5.0,40,800,ppi_perm,PPI Perm.,529,10000,1000,0.0529
+0.7,5.0,40,800,ppi_perm_uncentered,PPI Perm. (uncentered),222,10000,1000,0.0222
+0.7,5.0,60,800,ppi_perm,PPI Perm.,477,10000,1000,0.0477
+0.7,5.0,60,800,ppi_perm_uncentered,PPI Perm. (uncentered),195,10000,1000,0.0195
+0.7,5.0,80,800,ppi_perm,PPI Perm.,503,10000,1000,0.0503
+0.7,5.0,80,800,ppi_perm_uncentered,PPI Perm. (uncentered),200,10000,1000,0.02
+0.7,5.0,100,800,ppi_perm,PPI Perm.,473,10000,1000,0.0473
+0.7,5.0,100,800,ppi_perm_uncentered,PPI Perm. (uncentered),178,10000,1000,0.0178
+0.7,5.0,120,800,ppi_perm,PPI Perm.,459,10000,1000,0.0459
+0.7,5.0,120,800,ppi_perm_uncentered,PPI Perm. (uncentered),164,10000,1000,0.0164
+0.7,5.0,140,800,ppi_perm,PPI Perm.,478,10000,1000,0.0478
+0.7,5.0,140,800,ppi_perm_uncentered,PPI Perm. (uncentered),180,10000,1000,0.018
+0.7,5.0,160,800,ppi_perm,PPI Perm.,515,10000,1000,0.0515
+0.7,5.0,160,800,ppi_perm_uncentered,PPI Perm. (uncentered),186,10000,1000,0.0186
+0.7,5.0,180,800,ppi_perm,PPI Perm.,502,10000,1000,0.0502
+0.7,5.0,180,800,ppi_perm_uncentered,PPI Perm. (uncentered),174,10000,1000,0.0174
+0.7,5.0,200,800,ppi_perm,PPI Perm.,491,10000,1000,0.0491
+0.7,5.0,200,800,ppi_perm_uncentered,PPI Perm. (uncentered),212,10000,1000,0.0212

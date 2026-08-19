@@ -1,0 +1,31 @@
+{
+  "datasets": [
+    {"test_set": "wmt22", "language_pair": "en-de", "human_col": "mqm:seg", "human_type": "MQM"},
+    {"test_set": "wmt22", "language_pair": "en-ru", "human_col": "mqm:seg", "human_type": "MQM"},
+    {"test_set": "wmt22", "language_pair": "zh-en", "human_col": "mqm:seg", "human_type": "MQM"},
+    {"test_set": "wmt23", "language_pair": "en-zh", "human_col": "da-sqm:seg", "human_type": "DA-SQM"},
+    {"test_set": "wmt23", "language_pair": "ja-en", "human_col": "da-sqm:seg", "human_type": "DA-SQM"},
+    {"test_set": "wmt24", "language_pair": "cs-uk", "human_col": "esa:seg", "human_type": "ESA"}
+  ],
+  "representative_metric_by_testset": {
+    "wmt22": "metricx_xxl_MQM_2020-refA:seg",
+    "wmt23": "MetricX-23-refA:seg",
+    "wmt24": "MetricX-24-refA:seg"
+  },
+  "bleu_metric": "BLEU-refA:seg",
+  "gemba_metrics": {
+    "wmt23:en-zh": "GEMBA-MQM-src:seg",
+    "wmt23:ja-en": "GEMBA-MQM-src:seg",
+    "wmt24:cs-uk": "gemba_esa-src:seg"
+  },
+  "excluded_metric_columns": {
+    "wmt22:en-ru": [
+      "mqm.unb:seg"
+    ],
+    "wmt24:cs-uk": [
+      "XLsimMqm-src:seg",
+      "metametrics_mt_mqm_qe_same_source_t-src:seg",
+      "metametrics_mt_mqm_same_source_targ-refA:seg"
+    ]
+  }
+}
