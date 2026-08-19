@@ -11,9 +11,5 @@ venv/
 
 # Regenerated artifacts
 datasets/
-results/*
-!results/annotation_saving_vs_ppsr/
-!results/annotation_saving_vs_ppsr/**
-!results/type_i_error_metric_mean_shift_simulation/
-!results/type_i_error_metric_mean_shift_simulation/**
+results/
 logs/

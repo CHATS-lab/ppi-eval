@@ -1,7 +1,0 @@
-dataset,test_set,language_pair,human_col,num_systems,num_metrics,aligned_segments,raw_metric_candidates,num_tasks,num_system_pairs_requested,segment_ids_count
-wmt22 en-de,wmt22,en-de,mqm:seg,14,31,1315,31,91,91,1315
-wmt22 en-ru,wmt22,en-ru,mqm:seg,15,30,1315,30,105,105,1315
-wmt22 zh-en,wmt22,zh-en,mqm:seg,14,31,1875,31,91,91,1875
-wmt23 en-zh,wmt23,en-zh,da-sqm:seg,15,34,1098,34,105,105,1098
-wmt23 ja-en,wmt23,ja-en,da-sqm:seg,17,35,1120,35,136,136,1120
-wmt24 cs-uk,wmt24,cs-uk,esa:seg,11,25,1955,25,55,55,1955
