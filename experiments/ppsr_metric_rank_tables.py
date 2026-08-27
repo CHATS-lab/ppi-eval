@@ -115,16 +115,44 @@ def main() -> None:
     ensure_dir(args.output_dir)
     chunks = []
     frames = []
+    system_groups = {}
+    segment_groups = {}
     if args.scores.exists():
         scores = pd.read_csv(args.scores)
-        for (test_set, language_pair), group in scores.groupby(["test_set", "language_pair"], sort=False):
-            tex, table = make_table(group, test_set, language_pair, SYSTEM_META_ORDER, "system", "system-level")
-            chunks.append(tex)
-            frames.append(table.assign(table_type="system"))
+        system_groups = {
+            key: group
+            for key, group in scores.groupby(["test_set", "language_pair"], sort=False)
+        }
     if args.segment_scores.exists():
         scores = pd.read_csv(args.segment_scores)
-        for (test_set, language_pair), group in scores.groupby(["test_set", "language_pair"], sort=False):
-            tex, table = make_table(group, test_set, language_pair, SEGMENT_META_ORDER, "segment", "segment-level")
+        segment_groups = {
+            key: group
+            for key, group in scores.groupby(["test_set", "language_pair"], sort=False)
+        }
+    dataset_order = list(system_groups)
+    dataset_order.extend(key for key in segment_groups if key not in system_groups)
+    for test_set, language_pair in dataset_order:
+        key = (test_set, language_pair)
+        if key in system_groups:
+            tex, table = make_table(
+                system_groups[key],
+                test_set,
+                language_pair,
+                SYSTEM_META_ORDER,
+                "system",
+                "system-level",
+            )
+            chunks.append(tex)
+            frames.append(table.assign(table_type="system"))
+        if key in segment_groups:
+            tex, table = make_table(
+                segment_groups[key],
+                test_set,
+                language_pair,
+                SEGMENT_META_ORDER,
+                "segment",
+                "segment-level",
+            )
             chunks.append(tex)
             frames.append(table.assign(table_type="segment"))
     if not frames:
