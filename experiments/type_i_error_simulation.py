@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import shutil
 from pathlib import Path
 from statistics import NormalDist
 
@@ -52,10 +53,15 @@ def parse_args() -> argparse.Namespace:
 
 
 def parse_nu(label: str) -> float:
-    value = math.inf if label.lower() in {"inf", "infty", "infinity"} else float(label)
+    normalized = str(label).strip().lower()
+    value = math.inf if normalized in {"inf", "infty", "infinity"} else float(normalized)
     if not math.isinf(value) and value <= 2:
         raise ValueError(f"nu must be greater than 2, got {label!r}")
     return value
+
+
+def nu_display(label: str) -> str:
+    return r"\infty" if math.isinf(parse_nu(label)) else str(label)
 
 
 def sample_null(rng: np.random.Generator, rows: int, size: int, rho: float, nu_label: str) -> tuple[np.ndarray, np.ndarray]:
@@ -131,37 +137,118 @@ def run_condition(args, seed: int, rho: float, nu: str, l_size: int) -> list[dic
     ]
 
 
-def plot(summary: pd.DataFrame, args) -> None:
-    for setting, methods, filename in [
-        ("human_only", ["human_z", "human_z_oracle", "human_perm"], "type_i_error_human_only"),
-        ("ppi", ["ppi_z", "ppi_z_oracle", "ppi_perm"], "type_i_error_ppi"),
-    ]:
-        fig, axes = plt.subplots(len(args.rhos), len(args.nus), figsize=(12, 6.8), sharex=True, sharey=True)
-        axes = np.asarray(axes).reshape(len(args.rhos), len(args.nus))
-        for i, rho in enumerate(args.rhos):
-            for j, nu in enumerate(args.nus):
-                ax = axes[i, j]
-                sub = summary[(summary["setting"] == setting) & np.isclose(summary["rho"], rho) & (summary["nu"].astype(str) == str(nu))]
-                for method in methods:
-                    line = sub[sub["method"] == method].sort_values("labeled_size")
-                    ax.plot(
-                        line["labeled_size"],
-                        line["type_i_error"],
-                        marker="o",
-                        color=COLORS[method],
-                        linestyle="--" if "oracle" in method else "-",
-                        label=LABELS[method],
-                    )
-                ax.axhline(args.alpha, color="#666666", linestyle="--", linewidth=1)
-                nu_display = r"\infty" if str(nu) == "inf" else str(nu)
-                ax.set_title(rf"$\rho={rho}$, $\nu={nu_display}$")
-                ax.set_xlabel("L")
+def condition_subset(summary: pd.DataFrame, setting: str, rho: float, nu: str) -> pd.DataFrame:
+    target_nu = parse_nu(nu)
+    numeric_nu = summary["nu"].map(parse_nu)
+    if math.isinf(target_nu):
+        nu_mask = np.isinf(numeric_nu.to_numpy(dtype=float))
+    else:
+        nu_mask = np.isclose(numeric_nu.to_numpy(dtype=float), target_nu)
+    return summary[
+        (summary["setting"] == setting)
+        & np.isclose(summary["rho"].astype(float), rho)
+        & nu_mask
+    ]
+
+
+def draw_condition(ax: plt.Axes, subset: pd.DataFrame, methods: list[str], alpha: float) -> None:
+    for method in methods:
+        line = subset[subset["method"] == method].sort_values("labeled_size")
+        ax.plot(
+            line["labeled_size"],
+            line["type_i_error"],
+            marker="o",
+            linewidth=1.8,
+            markersize=3.5,
+            color=COLORS[method],
+            linestyle="--" if "oracle" in method else "-",
+            label=LABELS[method],
+        )
+    ax.axhline(alpha, color="#555555", linestyle="--", linewidth=1.0, label=r"$\alpha=0.05$")
+    ax.grid(alpha=0.25)
+
+
+def copy_compat_figures(figures_dir: Path, output_dir: Path, filename: str) -> None:
+    for suffix in (".pdf", ".png"):
+        src = figures_dir / f"{filename}{suffix}"
+        dst = output_dir / f"{filename}{suffix}"
+        if src.exists():
+            shutil.copyfile(src, dst)
+
+
+def plot_combined(
+    summary: pd.DataFrame,
+    args,
+    setting: str,
+    methods: list[str],
+    filename: str,
+    figures_dir: Path,
+) -> None:
+    fig, axes = plt.subplots(
+        len(args.rhos),
+        len(args.nus),
+        figsize=(12.2, 6.8),
+        sharex=True,
+        sharey=True,
+    )
+    axes = np.asarray(axes).reshape(len(args.rhos), len(args.nus))
+    for row_idx, rho in enumerate(args.rhos):
+        for col_idx, nu in enumerate(args.nus):
+            ax = axes[row_idx, col_idx]
+            subset = condition_subset(summary, setting, rho, str(nu))
+            draw_condition(ax, subset, methods, args.alpha)
+            ax.set_title(rf"$\rho={rho}$, $\nu={nu_display(str(nu))}$", fontsize=10)
+            if row_idx == len(args.rhos) - 1:
+                ax.set_xlabel("Labeled examples (L)")
+            if col_idx == 0:
                 ax.set_ylabel("Empirical Type I error")
-                ax.grid(alpha=0.25)
-        handles, labels = axes[0, 0].get_legend_handles_labels()
-        fig.legend(handles, labels, loc="lower center", ncol=3, frameon=False)
-        fig.tight_layout(rect=(0, 0.08, 1, 1))
-        savefig(fig, args.output_dir / f"{filename}.pdf")
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=3, frameon=False)
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
+    savefig(fig, figures_dir / f"{filename}.pdf")
+    copy_compat_figures(figures_dir, args.output_dir, filename)
+
+
+def safe_label(value: str) -> str:
+    return str(value).replace(".", "p").replace("-", "m")
+
+
+def plot_ppi_subfigures(summary: pd.DataFrame, args, figures_dir: Path) -> None:
+    methods = ["ppi_z", "ppi_z_oracle", "ppi_perm"]
+    for rho in args.rhos:
+        for nu in args.nus:
+            subset = condition_subset(summary, "ppi", rho, str(nu))
+            fig, ax = plt.subplots(figsize=(4.6, 3.4))
+            draw_condition(ax, subset, methods, args.alpha)
+            ax.set_title(rf"$\rho={rho}$, $\nu={nu_display(str(nu))}$", fontsize=10)
+            ax.set_xlabel("Labeled examples (L)")
+            ax.set_ylabel("Empirical Type I error")
+            ax.legend(frameon=False, fontsize=8)
+            fig.tight_layout()
+            rho_tag = safe_label(str(rho))
+            nu_tag = "inf" if math.isinf(parse_nu(str(nu))) else safe_label(str(nu))
+            savefig(fig, figures_dir / f"type_i_error_ppi_rho{rho_tag}_nu{nu_tag}.pdf")
+
+
+def plot(summary: pd.DataFrame, args) -> None:
+    figures_dir = ensure_dir(args.output_dir / "figures")
+    plot_combined(
+        summary,
+        args,
+        "human_only",
+        ["human_z", "human_z_oracle", "human_perm"],
+        "type_i_error_human_only",
+        figures_dir,
+    )
+    plot_combined(
+        summary,
+        args,
+        "ppi",
+        ["ppi_z", "ppi_z_oracle", "ppi_perm"],
+        "type_i_error_ppi",
+        figures_dir,
+    )
+    plot_ppi_subfigures(summary, args, figures_dir)
 
 
 def main() -> None:
