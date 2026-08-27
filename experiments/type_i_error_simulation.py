@@ -11,6 +11,7 @@ from statistics import NormalDist
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.lines import Line2D
 
 from ppi_mt_eval.intervals import human_perm_reject, human_z_reject, ppi_perm_reject, ppi_z_reject
 from ppi_mt_eval.plotting import ensure_dir, savefig
@@ -215,6 +216,21 @@ def safe_label(value: str) -> str:
 
 def plot_ppi_subfigures(summary: pd.DataFrame, args, figures_dir: Path) -> None:
     methods = ["ppi_z", "ppi_z_oracle", "ppi_perm"]
+    legend_handles = [
+        Line2D([0], [0], color=COLORS["ppi_z"], linestyle="-", marker="o", linewidth=1.8, markersize=4.0, label=LABELS["ppi_z"]),
+        Line2D(
+            [0, 1, 2, 3],
+            [0, 0, 0, 0],
+            color=COLORS["ppi_z_oracle"],
+            linestyle=(0, (4, 2)),
+            marker="o",
+            markevery=[1],
+            linewidth=2.4,
+            markersize=4.0,
+            label=LABELS["ppi_z_oracle"],
+        ),
+        Line2D([0], [0], color=COLORS["ppi_perm"], linestyle="-", marker="o", linewidth=1.8, markersize=4.0, label=LABELS["ppi_perm"]),
+    ]
     for rho in args.rhos:
         for nu in args.nus:
             subset = condition_subset(summary, "ppi", rho, str(nu))
@@ -223,7 +239,7 @@ def plot_ppi_subfigures(summary: pd.DataFrame, args, figures_dir: Path) -> None:
             ax.set_title(rf"$\rho={rho}$, $\nu={nu_display(str(nu))}$", fontsize=10)
             ax.set_xlabel("Labeled examples (L)")
             ax.set_ylabel("Empirical Type I error")
-            ax.legend(frameon=False, fontsize=8)
+            ax.legend(handles=legend_handles, frameon=False, fontsize=8, handlelength=4.5)
             fig.tight_layout()
             rho_tag = safe_label(str(rho))
             nu_tag = "inf" if math.isinf(parse_nu(str(nu))) else safe_label(str(nu))
